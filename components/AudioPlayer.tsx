@@ -29,6 +29,11 @@ const AudioPlayer: React.FC = () => {
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     const onCanPlay = () => setIsReady(true);
+    const onError = (e: Event) => {
+      console.error("Audio Error:", (e.target as HTMLAudioElement).error);
+      setIsPlaying(false); // Ensure UI reflects that playback isn't happening
+      // Potentially set another state here to show an error message to the user
+    };
     
     if (audio.readyState >= 2) { // HAVE_CURRENT_DATA or more
         setIsReady(true);
@@ -38,12 +43,14 @@ const AudioPlayer: React.FC = () => {
     audio.addEventListener('pause', onPause);
     audio.addEventListener('ended', onPause);
     audio.addEventListener('canplay', onCanPlay);
+    audio.addEventListener('error', onError);
 
     return () => {
       audio.removeEventListener('play', onPlay);
       audio.removeEventListener('pause', onPause);
       audio.removeEventListener('ended', onPause);
       audio.removeEventListener('canplay', onCanPlay);
+      audio.removeEventListener('error', onError);
     }
   }, []);
   
@@ -51,7 +58,7 @@ const AudioPlayer: React.FC = () => {
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 flex items-center space-x-6">
-      <audio ref={audioRef} src="podcast.wav" preload="metadata" style={{ display: 'none' }}></audio>
+      <audio ref={audioRef} src="/podcast.wav" preload="metadata" style={{ display: 'none' }}></audio>
       <div className="flex-shrink-0">
         <img className="h-24 w-24 rounded-full object-cover" src="https://picsum.photos/seed/dinosaur/200" alt="Dinosaur illustration" />
       </div>
