@@ -51,7 +51,7 @@ const AudioPlayer: React.FC = () => {
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 flex items-center space-x-6">
-      <audio ref={audioRef} src="/podcast.wav" preload="metadata" style={{ display: 'none' }}></audio>
+      <audio ref={audioRef} src="podcast.wav" preload="metadata" style={{ display: 'none' }}></audio>
       <div className="flex-shrink-0">
         <img className="h-24 w-24 rounded-full object-cover" src="https://picsum.photos/seed/dinosaur/200" alt="Dinosaur illustration" />
       </div>
