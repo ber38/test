@@ -26,6 +26,8 @@ const AudioPlayer: React.FC = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
+    audio.load();
+
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     const onCanPlay = () => setIsReady(true);
