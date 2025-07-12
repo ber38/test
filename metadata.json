@@ -1,0 +1,5 @@
+{
+  "name": "Dinosaur Podcast Quiz",
+  "description": "An interactive web page to listen to a podcast about dinosaurs and take a quiz to test your knowledge. This application features text-to-speech audio playback and a multi-question quiz.",
+  "requestFramePermissions": []
+}
